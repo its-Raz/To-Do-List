@@ -1,8 +1,17 @@
 import java.lang.reflect.Method;
+import java.util.Iterator;
 
 public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
     Node<T> first;
     Node<T> last;
+    /**
+     * CONSTRUCTOR
+     */
+    public LinkedListQueue(){
+        this.first = null;
+        this.last = null;
+    }
+
     public void enqueue(T element)
     {
         Node<T> newNode = new Node<T>(element);
@@ -19,23 +28,40 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
     }
     public void setFirst(Node<T> node){this.first=node;}
     public void setLast(Node<T> node){this.last=node;}
-
-
+/**
+ * removes the head and returns the data of the head
+ * @return the data of the head
+ */
     public T dequeue()
     {
-       
+       T data = first.getData();
+       first = first.getNextNode();
+       return data;
     }
     public T peek()
     {
         if(this.first!=null){return this.first.getData();}
         else{throw new EmptyQueueException();}
     }
-
+    /**
+     * checks how many node are there
+     * @return the number of nodes
+     */
     public int size()
     {
-      
+      int sumNodes = 0;
+      for (T node: this){
+         sumNodes ++;
+      }
+      return sumNodes;
     }
-    public boolean isEmpty(){}
+    /**
+     * checks if the queue is empty
+     * @return true if empty, otherwise false
+     */
+    public boolean isEmpty(){
+        return first == null;
+    }
 
 
     @Override
@@ -78,13 +104,40 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
 
 
     private class LinkedListQueueIterator implements Iterator<T> {
-      
+      private Node<T> nextNode ;
+        /**
+         * constructor
+         * @param nextNode- the next node
+         */
+      public LinkedListQueueIterator(Node<T> nextNode){
+          this.nextNode = nextNode;
+      }
+        /**
+         * continues to the next node
+         * @return the data of the next node
+         */
+      @Override
+        public T next(){
+          T data = nextNode.getData();
+          nextNode = nextNode.getNextNode();
+          return data;
+      }
+        /**
+         * checks if there is a next node
+         * @return true if there is a next node, otherwise false
+         */
+      @Override
+        public boolean hasNext(){
+          return nextNode != null;
+      }
 
     }
-
+    /**
+     * Iterator
+     */
     @Override
     public Iterator<T> iterator() {
-        
+        return new LinkedListQueueIterator(first);
     }
 }
 
