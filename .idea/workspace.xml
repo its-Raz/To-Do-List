@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HW3_GIT.iml" afterDir="false" />
-    </list>
+    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="starting files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +9,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Jm89hFY2nsCmlmnvuDvIDy0eDk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,8 +34,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672671750660</updated>
-      <workItem from="1672671752096" duration="327000" />
+      <workItem from="1672671752096" duration="683000" />
     </task>
+    <task id="LOCAL-00001" summary="starting files">
+      <created>1672672127298</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672672127298</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -55,5 +59,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="starting files" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting files" />
   </component>
 </project>
