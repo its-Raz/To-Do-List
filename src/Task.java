@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class Task implements Cloneable {
+public class Task implements Cloneable,Comparable {
 
     private String description;
     private Date dueDate;
@@ -49,6 +49,27 @@ public class Task implements Cloneable {
             Task other = (Task)obj;
             return this.dueDate.equals(other.getDueDate()) && this.description.equals(other.getDescription());
         }
+    }
+
+    //TODO:CHECK MAYBE TO ADD COMPERATOR AND NOT USING COMPARE TO DUE TO DOWNCASTING DANGER
+
+    @Override
+    public int compareTo(Object other) {
+        Task otherTask = (Task)other;
+        if(this.equals(otherTask)){return 0;}
+        if(this.getDueDate().compareTo(otherTask.getDueDate())==1)
+        {
+            if(this.description.compareTo(otherTask.getDescription())==1)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        else{return -1;}
+
     }
 
     @Override

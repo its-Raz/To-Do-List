@@ -1,3 +1,5 @@
+import jdk.nashorn.api.tree.Tree;
+
 import java.util.LinkedHashSet;
 import java.util.Date;
 import java.util.TreeMap;
@@ -8,8 +10,18 @@ public class ToDoList implements Cloneable,TaskIterable {
     LinkedHashSet<Task> addingOrderList;
     TreeMap<Date, TreeSet<Task>> dateOrderDict;
 
-    public ToDoList() {
-        super();
+    public ToDoList()
+    {
+        this.addingOrderList=null;
+        this.dateOrderDict=null;
+    }
+
+    public TreeMap<Date, TreeSet<Task>> getDateOrderDict() {
+        return dateOrderDict;
+    }
+
+    public LinkedHashSet<Task> getAddingOrderList() {
+        return addingOrderList;
     }
 
     @Override
@@ -17,11 +29,39 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     }
 
-
-
     public void addTask(Task task)
     {
-        //TODO:ADD TO BOTH LISTS
+        Date taskDate = task.getDueDate();
+        if(this.dateOrderDict == null)
+        {
+            this.dateOrderDict = new TreeMap<Date,TreeSet<Task>>();
+            TreeSet<Task> tSet = new TreeSet<Task>();
+            tSet.add(task);
+            this.dateOrderDict.put(taskDate,tSet);
+            this.addingOrderList = new LinkedHashSet<>();
+            this.addingOrderList.add(task);
+        }
+        else if(!(dateOrderDict.containsKey(taskDate)))
+        {
+            TreeSet<Task> tSet = new TreeSet<Task>();
+            tSet.add(task);
+            this.dateOrderDict.put(taskDate,tSet);
+            addingOrderList.add(task);
+        }
+        else
+        {
+            TreeSet<Task> tSet = dateOrderDict.get(taskDate);
+            boolean alreadyExist = false;
+            for(Task treeTask:tSet)
+            {
+                if(treeTask.equals(task)){alreadyExist=true;}
+            }
+            if(!(alreadyExist))
+            {
+                tSet.add(task);
+                addingOrderList.add(task);
+            }
+        }
     }
 
     @Override

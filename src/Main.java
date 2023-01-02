@@ -1,7 +1,4 @@
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.lang.reflect.Method;
 
 class MyCloneable implements Cloneable {
@@ -113,14 +110,37 @@ public class Main {
         iterateQueue(q4, "q4");
 
         System.out.println("\nTesting of part A is over!\n\n");
-        Task task1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
-        Task task2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.DECEMBER, 8));
-        Task task3 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
-        Task task4 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
-        System.out.println(task1.hashCode());
-        System.out.println(task2.hashCode());
-        System.out.println(task3.hashCode());
-        System.out.println(task4.hashCode());
+        ToDoList list1 = new ToDoList();
+                Task task3 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.OCTOBER, 20));
+        Task task4 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
+        Task task1 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
+        Task task2 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
+
+
+        list1.addTask(task1);
+        list1.addTask(task4);
+        list1.addTask(task3);
+        list1.addTask(task2);
+        TreeMap<Date,TreeSet<Task>> tMap = list1.getDateOrderDict();
+        //TODO:SORT THE TASKS WITH THE SAME DATE BY ALPHABETIC ORDER
+        for(Map.Entry<Date,TreeSet<Task>> entry : tMap.entrySet())
+        {
+            Date date = entry.getKey();
+            TreeSet<Task> tSet = entry.getValue();
+            for(Task task:tSet)
+            {
+                System.out.println(task.getDueDateSimple() + " " + task.getDescription());
+            }
+
+        }
+        LinkedHashSet<Task> hashSet = list1.getAddingOrderList();
+        /**PRINT THEM IN THE ADDING ORDER!*/
+        for(Task task:hashSet)
+        {
+            System.out.println(task.getDueDateSimple() + " " + task.getDescription());
+        }
+
+
     }
 
     /**
