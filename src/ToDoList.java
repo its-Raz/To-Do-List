@@ -63,14 +63,16 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         @Override
         public Task next(){
-
+            return null;
         }
+
         /**
          * checks if there is a next node
          * @return true if there is a next node, otherwise false
          */
         @Override
         public boolean hasNext(){
+            return true;
 
         }
 

@@ -34,20 +34,28 @@ public class Task implements Cloneable {
     }
 
 
-
     @Override
     public int hashCode() {
-        return super.hashCode();
+        String space = " ";
+        return (this.description+space+this.dueDateSimple).hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(!(obj instanceof Task))
+        {return false;}
+        else
+        {
+            Task other = (Task)obj;
+            return this.dueDate.equals(other.getDueDate()) && this.description.equals(other.getDescription());
+        }
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Task clone() {
+        try{return null;}
+        catch(Exception e)
+        {return null;}
     }
 
     @Override

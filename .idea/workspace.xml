@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="all methods">
-      <change afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TaskAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TaskIterable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ToDoList.java" afterDir="false" />
+    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="Part B structure added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LinkedListQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LinkedListQueue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDoList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1672671750660</updated>
       <workItem from="1672671752096" duration="2722000" />
+      <workItem from="1672695040642" duration="2673000" />
     </task>
     <task id="LOCAL-00001" summary="starting files">
       <created>1672672127298</created>
@@ -72,7 +70,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1672679843395</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Part B structure added">
+      <created>1672685876271</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672685876271</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +98,23 @@
     <MESSAGE value="starting files" />
     <MESSAGE value="starting files1" />
     <MESSAGE value="all methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="all methods" />
+    <MESSAGE value="Part B structure added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Part B structure added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

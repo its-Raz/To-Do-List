@@ -113,10 +113,14 @@ public class Main {
         iterateQueue(q4, "q4");
 
         System.out.println("\nTesting of part A is over!\n\n");
-        Date date = new Date(2022 - 1900, Calendar.JANUARY, 5);
-        System.out.println(date.getTimezoneOffset());
-        System.out.println(date.getMonth());
-        System.out.println(date.getYear());
+        Task task1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
+        Task task2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.DECEMBER, 8));
+        Task task3 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
+        Task task4 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
+        System.out.println(task1.hashCode());
+        System.out.println(task2.hashCode());
+        System.out.println(task3.hashCode());
+        System.out.println(task4.hashCode());
     }
 
     /**
