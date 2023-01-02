@@ -34,8 +34,17 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
  */
     public T dequeue()
     {
+        if(isEmpty()){
+            throw new EmptyQueueException();
+        }
        T data = first.getData();
-       first = first.getNextNode();
+        if(size() == 1){
+            first = null;
+            last = null;
+        }
+        else {
+            first = first.getNextNode();
+        }
        return data;
     }
     public T peek()
@@ -50,6 +59,9 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
     public int size()
     {
       int sumNodes = 0;
+      if(isEmpty()){
+          return sumNodes;
+      }
       for (T node: this){
          sumNodes ++;
       }
