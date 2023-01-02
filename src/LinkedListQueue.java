@@ -58,6 +58,7 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
      */
     public int size()
     {
+      if(isEmpty()){return 0;}
       int sumNodes = 0;
       if(isEmpty()){
           return sumNodes;

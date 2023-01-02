@@ -113,6 +113,10 @@ public class Main {
         iterateQueue(q4, "q4");
 
         System.out.println("\nTesting of part A is over!\n\n");
+        Date date = new Date(2022 - 1900, Calendar.JANUARY, 5);
+        System.out.println(date.getTimezoneOffset());
+        System.out.println(date.getMonth());
+        System.out.println(date.getYear());
     }
 
     /**
