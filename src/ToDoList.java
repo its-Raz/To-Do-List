@@ -7,6 +7,7 @@ public class ToDoList implements Cloneable,TaskIterable {
     private TreeMap<Date, TreeSet<Task>> dateOrderDict;
     private Date scanningDueDate;
 
+
     public ToDoList()
     {
         this.addingOrderList=new LinkedHashSet<Task>();
@@ -100,7 +101,6 @@ public class ToDoList implements Cloneable,TaskIterable {
         private Date nextDate;
         private Date limitScanDate;
 
-
         /**
          * constructor
          * @param firstTask- the next node
@@ -122,32 +122,33 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         @Override
         public Task next(){
-            boolean noChange=false;
-                while(!(noChange)){
-                for(Task task: dateOrderDict.get(nextDate))
-                {
-                    if(task.getDescription().compareTo(nextTask.getDescription())>0) //means that we find a task with greater lexicographical value
-                    {
-                        nextTask = task;
-                        return nextTask;
-                    }
-                }
-                if(dateOrderDict.tailMap(nextDate).firstKey()!=null)
-                {
-                    nextDate = dateOrderDict.tailMap(nextDate).firstKey();
-                    if(this.limitScanDate!=null && this.limitScanDate.compareTo(nextDate) < 0) //means the limit scan date is lower than the next key date that found
-                    {
-                        this.nextTask=null;
-                        return null;
-                    }
-                }
-                else
-                {
-                    this.nextTask=null;
-                    return null;
-                }
+            TreeSet<Task> tSet;
+            Task taskToReturn=null;
+            if(nextTask!=null){
+            taskToReturn=nextTask;
+            tSet = dateOrderDict.get(nextDate);
+            nextTask = tSet.higher(taskToReturn);
             }
-            return nextTask;
+            if(nextTask==null&&taskToReturn==null)
+            {
+                if (dateOrderDict.higherKey(nextDate) != null)
+                {
+                    nextDate = dateOrderDict.higherKey(nextDate);
+                    if (this.limitScanDate != null && this.limitScanDate.compareTo(nextDate) < 0)
+                    {
+                        nextTask=null;
+                        nextDate=null;
+                    }
+                    else
+                    {
+                        tSet = dateOrderDict.get(nextDate);
+                        taskToReturn = tSet.first();
+                        nextTask=taskToReturn;
+                    }
+                }
+                else {nextTask=null;nextDate=null;}
+            }
+            return taskToReturn;
         }
 
         /**
@@ -156,7 +157,7 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         @Override
         public boolean hasNext(){
-            return nextTask!=null;
+            return nextTask!=null||nextDate!=null;
 
         }
 

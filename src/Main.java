@@ -120,36 +120,42 @@ public class Main {
         Task task2 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
 
 
-//        list1.addTask(task1);
-        list1.addTask(task0);
         list1.addTask(task1);
-//        list1.addTask(task2);
+        list1.addTask(task0);
+        list1.addTask(task6);
+        list1.addTask(task2);
         TreeMap<Date,TreeSet<Task>> tMap = list1.getDateOrderDict();
         //TODO:SORT THE TASKS WITH THE SAME DATE BY ALPHABETIC ORDER
-        for(Map.Entry<Date,TreeSet<Task>> entry : tMap.entrySet())
-        {
-            Date date = entry.getKey();
-            TreeSet<Task> tSet = entry.getValue();
-            for(Task task:tSet)
-            {
-                System.out.println(task.getDueDateSimple() + " " + task.getDescription());
-            }
+//        for(Map.Entry<Date,TreeSet<Task>> entry : tMap.entrySet())
+//        {
+//            Date date = entry.getKey();
+//            TreeSet<Task> tSet = entry.getValue();
+//            for(Task task:tSet)
+//            {
+//                System.out.println(task.getDueDateSimple() + " " + task.getDescription());
+//            }
+//
+//        }
 
-        }
-        LinkedHashSet<Task> hashSet = list1.getAddingOrderList();
+
+//        LinkedHashSet<Task> hashSet = list1.getAddingOrderList();
         /**PRINT THEM IN THE ADDING ORDER!*/
-        for(Task task:hashSet)
-        {
-            System.out.println( "(" + task.getDescription()+ ", " +task.getDueDateSimple() + ")");
-        }
+//        for(Task task:hashSet)
+//        {
+//            System.out.println( "(" + task.getDescription()+ ", " +task.getDueDateSimple() + ")");
+//        }
 
-        Task task5 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
-        try{
-        list1.addTask(task5);}
-        catch(TaskAlreadyExistsException e)
-        {
-            System.out.println("TaskAlreadyExistsException was thrown!");
-            System.out.println("task with different reference but same content was disabled from be added!");
+//        Task task5 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
+//        try{
+//        list1.addTask(task5);}
+//        catch(TaskAlreadyExistsException e)
+//        {
+//            System.out.println("TaskAlreadyExistsException was thrown!");
+//            System.out.println("task with different reference but same content was disabled from be added!");
+//        }
+        for (Task t : list1) {
+            System.out.println(t);
+            System.out.println("-----------------------------------");
         }
 
         /**END OF RACHELI AND RAZ TESTS*/

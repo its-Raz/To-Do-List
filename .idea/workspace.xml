@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="update">
+    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="comperator done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LinkedListQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LinkedListQueue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDoList.java" afterDir="false" />
@@ -51,7 +50,7 @@
       <workItem from="1672695040642" duration="6629000" />
       <workItem from="1672740544452" duration="3869000" />
       <workItem from="1672757392535" duration="448000" />
-      <workItem from="1672768560658" duration="5804000" />
+      <workItem from="1672768560658" duration="10992000" />
     </task>
     <task id="LOCAL-00001" summary="starting files">
       <created>1672672127298</created>
@@ -95,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672744404348</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="comperator done">
+      <created>1672774409814</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672774409814</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,17 +125,7 @@
     <MESSAGE value="Part B structure added" />
     <MESSAGE value="finished Task hashcode and equals" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>124</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="comperator done" />
+    <option name="LAST_COMMIT_MESSAGE" value="comperator done" />
   </component>
 </project>

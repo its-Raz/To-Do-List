@@ -78,7 +78,7 @@ public class Task implements Cloneable,Comparable {
     public Task clone() {
         try{
             Task copy = (Task) super.clone();
-            copy.dueDate = (Date) super.clone();
+            copy.dueDate = (Date) dueDate.clone();
             return copy;
         }
         catch(CloneNotSupportedException e)
