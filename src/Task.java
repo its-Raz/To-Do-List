@@ -74,13 +74,18 @@ public class Task implements Cloneable,Comparable {
 
     @Override
     public Task clone() {
-        try{return null;}
-        catch(Exception e)
+        try{
+            Task copy = (Task) super.clone();
+            copy.dueDate = (Date) super.clone();
+            return copy;
+        }
+        catch(CloneNotSupportedException e)
         {return null;}
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        String str = "(" + this.description + "," + this.dueDateSimple + ")";
+        return str;
     }
 }
