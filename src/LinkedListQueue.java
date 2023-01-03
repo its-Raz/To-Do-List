@@ -154,8 +154,4 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
     }
 }
 
-//    Integer num = new Integer(2);
-//        num.clone();
-//                Class myclass = Integer.class.getClass();
-//        Method myclone = myclass.getMethod("clone");
-//        myclone.invoke(num);
+

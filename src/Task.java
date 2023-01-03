@@ -57,9 +57,10 @@ public class Task implements Cloneable,Comparable {
     public int compareTo(Object other) {
         Task otherTask = (Task)other;
         if(this.equals(otherTask)){return 0;}
-        if(this.getDueDate().compareTo(otherTask.getDueDate())==1)
+        int dateCompare=this.getDueDate().compareTo(otherTask.getDueDate());
+        if(dateCompare==0)//if they have same date but diff desc
         {
-            if(this.description.compareTo(otherTask.getDescription())==1)
+            if(this.description.compareTo(otherTask.getDescription())>0)
             {
                 return 1;
             }
@@ -67,9 +68,10 @@ public class Task implements Cloneable,Comparable {
             {
                 return -1;
             }
+        } else if (dateCompare>0) {
+            return 1;
         }
         else{return -1;}
-
     }
 
     @Override

@@ -45,7 +45,7 @@ public class ToDoList implements Cloneable,TaskIterable {
         TreeSet<Task> tSet;
         if (!(dateOrderDict.containsKey(taskDate)))
         {
-            tSet = new TreeSet<Task>();
+            tSet = new TreeSet<Task>(new TaskComparator());
             tSet.add(task);
             this.dateOrderDict.put(taskDate,tSet);
             addingOrderList.add(task);
@@ -97,7 +97,9 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     private class ToDoListIterator implements Iterator<Task> {
         private Task nextTask ;
+        private Date nextDate;
         private Date limitScanDate;
+
 
         /**
          * constructor
@@ -105,11 +107,13 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         public ToDoListIterator(Task firstTask){
             this.nextTask=firstTask;
-
+            this.nextDate=getDateOrderDict().firstKey();
+            this.limitScanDate=null;
         }
         public ToDoListIterator(Task firstTask,Date date)
         {
             this.nextTask=firstTask;
+            this.nextDate=getDateOrderDict().firstKey();
             this.limitScanDate=date;
         }
         /**
@@ -118,23 +122,32 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         @Override
         public Task next(){
-//            for(Map.Entry<Date,TreeSet<Task>> entry : dateOrderDict.entrySet()) //Map.Entry is a sub interface in Map
-//            {
-//                if(this.limitScanDate!=null && entry.getKey().compareTo(this.limitScanDate) > 0) //it means that specific scanning due date was set
-//                {
-//                    nextTask = null;
-//                }
-//                else
-//                {
-//                    TreeSet<Task> tSet = entry.getValue();
-//                    for(Task t: tSet)
-//                    {
-//
-//                    }
-//                }
-//
-//            }
-            return null;
+            boolean noChange=false;
+                while(!(noChange)){
+                for(Task task: dateOrderDict.get(nextDate))
+                {
+                    if(task.getDescription().compareTo(nextTask.getDescription())>0) //means that we find a task with greater lexicographical value
+                    {
+                        nextTask = task;
+                        return nextTask;
+                    }
+                }
+                if(dateOrderDict.tailMap(nextDate).firstKey()!=null)
+                {
+                    nextDate = dateOrderDict.tailMap(nextDate).firstKey();
+                    if(this.limitScanDate!=null && this.limitScanDate.compareTo(nextDate) < 0) //means the limit scan date is lower than the next key date that found
+                    {
+                        this.nextTask=null;
+                        return null;
+                    }
+                }
+                else
+                {
+                    this.nextTask=null;
+                    return null;
+                }
+            }
+            return nextTask;
         }
 
         /**
@@ -148,6 +161,11 @@ public class ToDoList implements Cloneable,TaskIterable {
         }
 
     }
-
-
+    public class TaskComparator implements Comparator<Task>
+    {
+        @Override
+        public int compare(Task t1, Task t2) {
+            return t1.compareTo(t2);
+        }
+    }
 }

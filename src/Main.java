@@ -114,16 +114,16 @@ public class Main {
         /**RACHELI AND RAZ TESTS*/
         /**RACHELI AND RAZ TESTS*/
         ToDoList list1 = new ToDoList();
-                Task task3 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.OCTOBER, 20));
-        Task task4 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
-        Task task1 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
+                Task task1 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.OCTOBER, 20));
+        Task task0 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
+        Task task6 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
         Task task2 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
 
 
+//        list1.addTask(task1);
+        list1.addTask(task0);
         list1.addTask(task1);
-        list1.addTask(task4);
-        list1.addTask(task3);
-        list1.addTask(task2);
+//        list1.addTask(task2);
         TreeMap<Date,TreeSet<Task>> tMap = list1.getDateOrderDict();
         //TODO:SORT THE TASKS WITH THE SAME DATE BY ALPHABETIC ORDER
         for(Map.Entry<Date,TreeSet<Task>> entry : tMap.entrySet())
@@ -140,7 +140,7 @@ public class Main {
         /**PRINT THEM IN THE ADDING ORDER!*/
         for(Task task:hashSet)
         {
-            System.out.println(task.getDueDateSimple() + " " + task.getDescription());
+            System.out.println( "(" + task.getDescription()+ ", " +task.getDueDateSimple() + ")");
         }
 
         Task task5 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
