@@ -83,7 +83,15 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     @Override
     public String toString() {
-        return super.toString();
+        String str = "[";
+        if(this.addingOrderList == null){
+            return str + "]";
+        }
+        Iterator itr = this.addingOrderList.iterator(); // ********** remove after update? ***********
+        for(Task task:addingOrderList){
+            str = str + "," + task;
+        }
+        return str + "]";
     }
     @Override
     public Iterator<Task> iterator() {

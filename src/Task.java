@@ -81,8 +81,9 @@ public class Task implements Cloneable,Comparable {
             copy.dueDate = (Date) dueDate.clone();
             return copy;
         }
-        catch(CloneNotSupportedException e)
-        {return null;}
+        catch(CloneNotSupportedException e){
+            return null;
+        }
     }
 
     @Override
