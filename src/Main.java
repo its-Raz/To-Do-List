@@ -110,6 +110,9 @@ public class Main {
         iterateQueue(q4, "q4");
 
         System.out.println("\nTesting of part A is over!\n\n");
+
+        /**RACHELI AND RAZ TESTS*/
+        /**RACHELI AND RAZ TESTS*/
         ToDoList list1 = new ToDoList();
                 Task task3 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.OCTOBER, 20));
         Task task4 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
@@ -139,6 +142,17 @@ public class Main {
         {
             System.out.println(task.getDueDateSimple() + " " + task.getDescription());
         }
+
+        Task task5 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
+        try{
+        list1.addTask(task5);}
+        catch(TaskAlreadyExistsException e)
+        {
+            System.out.println("TaskAlreadyExistsException was thrown!");
+            System.out.println("task with different reference but same content was disabled from be added!");
+        }
+
+        /**END OF RACHELI AND RAZ TESTS*/
 
 
     }

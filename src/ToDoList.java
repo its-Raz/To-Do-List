@@ -1,19 +1,17 @@
 import jdk.nashorn.api.tree.Tree;
 
-import java.util.LinkedHashSet;
-import java.util.Date;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.Iterator;
+import java.util.*;
 
 public class ToDoList implements Cloneable,TaskIterable {
-    LinkedHashSet<Task> addingOrderList;
-    TreeMap<Date, TreeSet<Task>> dateOrderDict;
+    private LinkedHashSet<Task> addingOrderList;
+    private TreeMap<Date, TreeSet<Task>> dateOrderDict;
+    private Date scanningDueDate;
 
     public ToDoList()
     {
-        this.addingOrderList=null;
-        this.dateOrderDict=null;
+        this.addingOrderList=new LinkedHashSet<Task>();
+        this.dateOrderDict=new TreeMap<Date,TreeSet<Task>>();
+        this.scanningDueDate=null;
     }
 
     public TreeMap<Date, TreeSet<Task>> getDateOrderDict() {
@@ -24,44 +22,47 @@ public class ToDoList implements Cloneable,TaskIterable {
         return addingOrderList;
     }
 
+    public Task getFirstTask()
+    {
+        for(Map.Entry<Date,TreeSet<Task>> entry : dateOrderDict.entrySet())
+        {
+            for(Task task:entry.getValue())
+            {
+                return task;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void setScanningDueDate(Date date) {
-
+        this.scanningDueDate=date;
     }
 
     public void addTask(Task task)
     {
         Date taskDate = task.getDueDate();
-        if(this.dateOrderDict == null)
+        TreeSet<Task> tSet;
+        if (!(dateOrderDict.containsKey(taskDate)))
         {
-            this.dateOrderDict = new TreeMap<Date,TreeSet<Task>>();
-            TreeSet<Task> tSet = new TreeSet<Task>();
-            tSet.add(task);
-            this.dateOrderDict.put(taskDate,tSet);
-            this.addingOrderList = new LinkedHashSet<>();
-            this.addingOrderList.add(task);
-        }
-        else if(!(dateOrderDict.containsKey(taskDate)))
-        {
-            TreeSet<Task> tSet = new TreeSet<Task>();
+            tSet = new TreeSet<Task>();
             tSet.add(task);
             this.dateOrderDict.put(taskDate,tSet);
             addingOrderList.add(task);
         }
         else
         {
-            TreeSet<Task> tSet = dateOrderDict.get(taskDate);
-            boolean alreadyExist = false;
+            tSet = dateOrderDict.get(taskDate);
             for(Task treeTask:tSet)
             {
-                if(treeTask.equals(task)){alreadyExist=true;}
+                if(treeTask.equals(task)){
+                    throw new TaskAlreadyExistsException();
+                }
             }
-            if(!(alreadyExist))
-            {
                 tSet.add(task);
                 addingOrderList.add(task);
-            }
         }
+
     }
 
     @Override
@@ -85,17 +86,31 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
     @Override
     public Iterator<Task> iterator() {
-        return null;
+        if(this.scanningDueDate!=null)
+        {
+            return new ToDoListIterator(getFirstTask(),this.scanningDueDate);
+        }
+        else{
+            return new ToDoListIterator(getFirstTask());
+        }
     }
 
     private class ToDoListIterator implements Iterator<Task> {
         private Task nextTask ;
+        private Date limitScanDate;
+
         /**
          * constructor
-         * @param nextTask- the next node
+         * @param firstTask- the next node
          */
-        public ToDoListIterator(Task nextTask){
+        public ToDoListIterator(Task firstTask){
+            this.nextTask=firstTask;
 
+        }
+        public ToDoListIterator(Task firstTask,Date date)
+        {
+            this.nextTask=firstTask;
+            this.limitScanDate=date;
         }
         /**
          * continues to the next node
@@ -103,6 +118,22 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         @Override
         public Task next(){
+//            for(Map.Entry<Date,TreeSet<Task>> entry : dateOrderDict.entrySet()) //Map.Entry is a sub interface in Map
+//            {
+//                if(this.limitScanDate!=null && entry.getKey().compareTo(this.limitScanDate) > 0) //it means that specific scanning due date was set
+//                {
+//                    nextTask = null;
+//                }
+//                else
+//                {
+//                    TreeSet<Task> tSet = entry.getValue();
+//                    for(Task t: tSet)
+//                    {
+//
+//                    }
+//                }
+//
+//            }
             return null;
         }
 
@@ -112,7 +143,7 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         @Override
         public boolean hasNext(){
-            return true;
+            return nextTask!=null;
 
         }
 
