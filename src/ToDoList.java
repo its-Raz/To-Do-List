@@ -147,9 +147,13 @@ public class ToDoList implements Cloneable,TaskIterable {
                 if(nextDate!=null)
                 {
                     if(limitScanDate==null){nextTask = dateOrderDict.get(nextDate).first();}
-                    else if(nextDate.compareTo(limitScanDate)<=0)
+                    else if(nextDate.compareTo(limitScanDate)<0)
                     {
                         nextTask = dateOrderDict.get(nextDate).first();
+                    }
+                    else
+                    {
+                        nextDate=null;
                     }
                 }
             }
