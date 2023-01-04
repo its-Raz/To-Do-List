@@ -69,7 +69,11 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 0;
+        for(Task task:addingOrderList){
+            hash += task.hashCode();
+        }
+        return hash;
     }
 
     @Override
@@ -95,9 +99,11 @@ public class ToDoList implements Cloneable,TaskIterable {
         if(this.addingOrderList == null){
             return str + "]";
         }
-        Iterator itr = this.addingOrderList.iterator(); // ********** remove after update? ***********
         for(Task task:addingOrderList){
-            str = str + "," + task;
+            str += task;
+            if(iterator().hasNext()){
+                str += ",";
+            }
         }
         return str + "]";
     }
@@ -147,13 +153,9 @@ public class ToDoList implements Cloneable,TaskIterable {
                 if(nextDate!=null)
                 {
                     if(limitScanDate==null){nextTask = dateOrderDict.get(nextDate).first();}
-                    else if(nextDate.compareTo(limitScanDate)<0)
+                    else if(nextDate.compareTo(limitScanDate)<=0)
                     {
                         nextTask = dateOrderDict.get(nextDate).first();
-                    }
-                    else
-                    {
-                        nextDate=null;
                     }
                 }
             }
