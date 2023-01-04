@@ -36,7 +36,7 @@ class MyCloneable implements Cloneable {
 
 public class Main {
     public static void main(String[] args) {
-//        testPartA();
+        testPartA();
         testPartB();
     }
 
@@ -268,6 +268,7 @@ public class Main {
                 System.out.println("-----------------------------------");
             }
             System.out.println("After scan number " + i++ + "\n");
+
         }
 
         System.out.println("Done scanning");

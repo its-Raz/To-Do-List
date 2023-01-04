@@ -84,6 +84,10 @@ public class ToDoList implements Cloneable,TaskIterable {
         {return false;}
         ToDoList other = (ToDoList) obj;
         TreeMap<Date, TreeSet<Task>> otherDateOrderDict = other.dateOrderDict;
+        if(other.addingOrderList.size() != this.addingOrderList.size())
+        {return false;} //they dont have the same amount of tasks
+        if(other.dateOrderDict.size() != this.dateOrderDict.size())
+        {return false;} //maybe they have the same amount of tasks but different key date values
         for(Map.Entry<Date,TreeSet<Task>> entry : otherDateOrderDict.entrySet())
         {
             if(!(this.dateOrderDict.containsKey(entry.getKey()))) //because if this date doesnt exist in this tree so
@@ -203,7 +207,7 @@ public class ToDoList implements Cloneable,TaskIterable {
                 if(nextDate!=null)
                 {
                     if(limitScanDate==null){nextTask = dateOrderDict.get(nextDate).first();}
-                    else if(nextDate.compareTo(limitScanDate)<0)
+                    else if(nextDate.compareTo(limitScanDate)<=0)
                     {
                         nextTask = dateOrderDict.get(nextDate).first();
                     }
@@ -224,6 +228,13 @@ public class ToDoList implements Cloneable,TaskIterable {
         @Override
         public boolean hasNext(){
             if(addingOrderList.isEmpty()){return false;}
+            if(limitScanDate!=null && nextDate!=null)
+            {
+                if(limitScanDate.compareTo(nextDate)<0)
+                {
+                    return false;
+                }
+            }
             return nextTask!=null||nextDate!=null;
 
         }
