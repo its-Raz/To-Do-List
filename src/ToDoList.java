@@ -36,6 +36,7 @@ public class ToDoList implements Cloneable,TaskIterable {
         return null;
     }
 
+
     @Override
     public void setScanningDueDate(Date date) {
         this.scanningDueDate=date;
@@ -56,7 +57,7 @@ public class ToDoList implements Cloneable,TaskIterable {
         {
             tSet = new TreeSet<Task>(new TaskComparator());
             tSet.add(task);
-            this.dateOrderDict.put(taskDate,tSet);
+            this.dateOrderDict.put(task.getDueDate(),tSet);
             addingOrderList.add(task);
         }
         else

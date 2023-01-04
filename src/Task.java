@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Task implements Cloneable,Comparable {
 
@@ -26,8 +27,10 @@ public class Task implements Cloneable,Comparable {
     }
     public void setDueDate(Date date)
     {
-        this.dueDate=date;
+
+        this.dueDate.setTime(date.getTime());
         this.dueDateSimple = simpleDateFormat(date);
+
     }
 
 
