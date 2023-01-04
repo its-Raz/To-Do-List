@@ -47,7 +47,7 @@ public class Task implements Cloneable,Comparable {
         else
         {
             Task other = (Task)obj;
-            return this.dueDate.equals(other.getDueDate()) && this.description.equals(other.getDescription());
+            return this.description.equals(other.getDescription());
         }
     }
 

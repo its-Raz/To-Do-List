@@ -45,6 +45,13 @@ public class ToDoList implements Cloneable,TaskIterable {
     {
         Date taskDate = task.getDueDate();
         TreeSet<Task> tSet;
+        for(Task t : addingOrderList)
+        {
+            if(t.equals(task))
+            {
+                throw new TaskAlreadyExistsException();
+            }
+        }
         if (!(dateOrderDict.containsKey(taskDate)))
         {
             tSet = new TreeSet<Task>(new TaskComparator());
@@ -55,12 +62,6 @@ public class ToDoList implements Cloneable,TaskIterable {
         else
         {
             tSet = dateOrderDict.get(taskDate);
-            for(Task treeTask:tSet)
-            {
-                if(treeTask.equals(task)){
-                    throw new TaskAlreadyExistsException();
-                }
-            }
                 tSet.add(task);
                 addingOrderList.add(task);
         }
@@ -78,32 +79,72 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(!(obj instanceof ToDoList))
+        {return false;}
+        ToDoList other = (ToDoList) obj;
+        TreeMap<Date, TreeSet<Task>> otherDateOrderDict = other.dateOrderDict;
+        for(Map.Entry<Date,TreeSet<Task>> entry : otherDateOrderDict.entrySet())
+        {
+            if(!(this.dateOrderDict.containsKey(entry.getKey()))) //because if this date doesnt exist in this tree so
+            {
+                return false;
+            }
+            TreeSet<Task> otherTSet = entry.getValue();
+            TreeSet<Task> thisTSet = this.dateOrderDict.get(entry.getKey());
+            for(Task otherTask:otherTSet)
+            {
+                boolean exist=false;
+               for(Task thisTask : thisTSet)
+               {
+                   if(otherTask.equals(thisTask))
+                   {
+                       exist=true;
+                   }
+               }
+               if(!exist)
+               {
+                   return false;
+               }
+            }
+        }
+        return true;
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
+    public Object clone() {
+        try{
         ToDoList newTDL = new ToDoList();
-       for(Task t : this.addingOrderList)
-       {
-           newTDL.addTask(t.clone());
-       }
-       Date copiedScanningDate =(Date) this.scanningDueDate.clone();
-       newTDL.setScanningDueDate(copiedScanningDate);
-       return newTDL;
+        for(Task t : this.addingOrderList)
+        {
+            newTDL.addTask(t.clone());
+        }
+        if(this.scanningDueDate!=null){
+        Date copiedScanningDate =(Date) this.scanningDueDate.clone();
+            newTDL.setScanningDueDate(copiedScanningDate);}
+
+        return newTDL;}
+        catch(Exception e)
+        {
+            return null;
+        }
     }
+
 
     @Override
     public String toString() {
+        int counter=0;
         String str = "[";
         if(this.addingOrderList == null){
             return str + "]";
         }
         for(Task task:addingOrderList){
-            str += task;
-            if(iterator().hasNext()){
+            if(counter==0)
+            {str += task;}
+            else{
                 str += ",";
+                str += task;
             }
+            counter++;
         }
         return str + "]";
     }
@@ -153,9 +194,13 @@ public class ToDoList implements Cloneable,TaskIterable {
                 if(nextDate!=null)
                 {
                     if(limitScanDate==null){nextTask = dateOrderDict.get(nextDate).first();}
-                    else if(nextDate.compareTo(limitScanDate)<=0)
+                    else if(nextDate.compareTo(limitScanDate)<0)
                     {
                         nextTask = dateOrderDict.get(nextDate).first();
+                    }
+                    else
+                    {
+                        nextDate=null;
                     }
                 }
             }

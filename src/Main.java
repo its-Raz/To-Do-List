@@ -125,8 +125,25 @@ public class Main {
         list1.addTask(task0);
         list1.addTask(task6);
         list1.addTask(task2);
+        ToDoList list2 = new ToDoList();
+        try{
+        list2 = (ToDoList) list1.clone();}
+        catch (Exception e){
+            System.out.println("here!!!!");
+        };
         Date duedate = new Date(2022 - 1900, Calendar.OCTOBER, 20);
+        Task task10 = new Task("Software Engineering HW8", new Date(2023 - 1900, Calendar.JANUARY, 12));
+        list2.addTask(task10);
+        try{
+            list1.addTask(task2);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Exception");
+        }
         list1.setScanningDueDate(duedate);
+        System.out.println(list2);
+        System.out.println("Here!");
 
 //        list1.setScanningDueDate(duedate);
 //        ToDoList list5 = new ToDoList();
@@ -175,6 +192,7 @@ public class Main {
             System.out.println(t);
             System.out.println("-----------------------------------");
         }
+        System.out.println(list1);
 
         /**END OF RACHELI AND RAZ TESTS*/
 
