@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="clone TDL done">
+    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="toDoList comperator DONE&#10;toDoList iterator - still on work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDoList.java" afterDir="false" />
@@ -50,7 +50,7 @@
       <workItem from="1672740544452" duration="3869000" />
       <workItem from="1672757392535" duration="448000" />
       <workItem from="1672768560658" duration="11352000" />
-      <workItem from="1672829154320" duration="4181000" />
+      <workItem from="1672829154320" duration="3475000" />
     </task>
     <task id="LOCAL-00001" summary="starting files">
       <created>1672672127298</created>
@@ -108,14 +108,7 @@
       <option name="project" value="LOCAL" />
       <updated>1672779593098</updated>
     </task>
-    <task id="LOCAL-00009" summary="clone TDL done">
-      <created>1672832732891</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1672832732892</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +134,17 @@
     <MESSAGE value="update" />
     <MESSAGE value="comperator done" />
     <MESSAGE value="toDoList comperator DONE&#10;toDoList iterator - still on work" />
-    <MESSAGE value="clone TDL done" />
-    <option name="LAST_COMMIT_MESSAGE" value="clone TDL done" />
+    <option name="LAST_COMMIT_MESSAGE" value="toDoList comperator DONE&#10;toDoList iterator - still on work" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
