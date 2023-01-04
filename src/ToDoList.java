@@ -137,34 +137,24 @@ public class ToDoList implements Cloneable,TaskIterable {
          * @return the data of the next node
          */
         @Override
-        public Task next(){
-            TreeSet<Task> tSet;
-            Task taskToReturn=null;
-            if(nextTask!=null){
-            taskToReturn=nextTask;
-            tSet = dateOrderDict.get(nextDate);
-            nextTask = tSet.higher(taskToReturn);
-            }
-            if(nextTask==null&&taskToReturn==null)
+        public Task next()
+        {
+            Task taskToReturn = nextTask;
+            nextTask = dateOrderDict.get(nextDate).higher(taskToReturn);
+            if(nextTask==null)
             {
-                if (dateOrderDict.higherKey(nextDate) != null)
+                nextDate = dateOrderDict.higherKey(nextDate);
+                if(nextDate!=null)
                 {
-                    nextDate = dateOrderDict.higherKey(nextDate);
-                    if (this.limitScanDate != null && this.limitScanDate.compareTo(nextDate) < 0)
+                    if(limitScanDate==null){nextTask = dateOrderDict.get(nextDate).first();}
+                    else if(nextDate.compareTo(limitScanDate)<=0)
                     {
-                        nextTask=null;
-                        nextDate=null;
-                    }
-                    else
-                    {
-                        tSet = dateOrderDict.get(nextDate);
-                        taskToReturn = tSet.first();
-                        nextTask=taskToReturn;
+                        nextTask = dateOrderDict.get(nextDate).first();
                     }
                 }
-                else {nextTask=null;nextDate=null;}
             }
             return taskToReturn;
+
         }
 
         /**
