@@ -111,7 +111,7 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     @Override
-    public Object clone() {
+    public ToDoList clone() {
         try{
         ToDoList newTDL = new ToDoList();
         for(Task t : this.addingOrderList)
@@ -139,10 +139,10 @@ public class ToDoList implements Cloneable,TaskIterable {
         }
         for(Task task:addingOrderList){
             if(counter==0)
-            {str += task;}
+            {str +="("+ task+")";}
             else{
-                str += ",";
-                str += task;
+                str += ", ";
+                str +="("+ task+")";
             }
             counter++;
         }
@@ -154,8 +154,12 @@ public class ToDoList implements Cloneable,TaskIterable {
         {
             return new ToDoListIterator(getFirstTask(),this.scanningDueDate);
         }
-        else{
+        else if(!addingOrderList.isEmpty()){
             return new ToDoListIterator(getFirstTask());
+        }
+        else
+        {
+            return new ToDoListIterator();
         }
     }
 
@@ -163,6 +167,10 @@ public class ToDoList implements Cloneable,TaskIterable {
         private Task nextTask ;
         private Date nextDate;
         private Date limitScanDate;
+
+        public ToDoListIterator() {
+            this.nextTask=null;
+        }
 
         /**
          * constructor
@@ -214,6 +222,7 @@ public class ToDoList implements Cloneable,TaskIterable {
          */
         @Override
         public boolean hasNext(){
+            if(addingOrderList.isEmpty()){return false;}
             return nextTask!=null||nextDate!=null;
 
         }

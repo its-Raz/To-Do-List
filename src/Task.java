@@ -24,6 +24,12 @@ public class Task implements Cloneable,Comparable {
     public String getDescription() {
         return description;
     }
+    public void setDueDate(Date date)
+    {
+        this.dueDate=date;
+        this.dueDateSimple = simpleDateFormat(date);
+    }
+
 
     public Date getDueDate() {
         return dueDate;
@@ -88,7 +94,7 @@ public class Task implements Cloneable,Comparable {
 
     @Override
     public String toString() {
-        String str = "(" + this.description + "," + this.dueDateSimple + ")";
+        String str = this.description + ", " + this.dueDateSimple;
         return str;
     }
 }

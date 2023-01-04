@@ -1,5 +1,7 @@
-import java.util.*;
-import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 class MyCloneable implements Cloneable {
     private int num;
@@ -22,7 +24,7 @@ class MyCloneable implements Cloneable {
     }
 
     @Override
-    public MyCloneable clone(){
+    public MyCloneable clone() {
         try {
             return (MyCloneable) super.clone();
         } catch (CloneNotSupportedException e) {
@@ -33,10 +35,9 @@ class MyCloneable implements Cloneable {
 
 
 public class Main {
-
-    public static void main(String[] args) throws Exception {
-        testPartA();
-//        testPartB();
+    public static void main(String[] args) {
+//        testPartA();
+        testPartB();
     }
 
     /**
@@ -110,93 +111,6 @@ public class Main {
         iterateQueue(q4, "q4");
 
         System.out.println("\nTesting of part A is over!\n\n");
-
-        /**RACHELI AND RAZ TESTS*/
-        /**RACHELI AND RAZ TESTS*/
-
-        ToDoList list1 = new ToDoList();
-                Task task1 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.OCTOBER, 20));
-        Task task0 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
-        Task task6 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
-        Task task2 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
-
-
-        list1.addTask(task1);
-        list1.addTask(task0);
-        list1.addTask(task6);
-        list1.addTask(task2);
-        ToDoList list2 = new ToDoList();
-        try{
-        list2 = (ToDoList) list1.clone();}
-        catch (Exception e){
-            System.out.println("here!!!!");
-        };
-        Date duedate = new Date(2022 - 1900, Calendar.OCTOBER, 20);
-        Task task10 = new Task("Software Engineering HW8", new Date(2023 - 1900, Calendar.JANUARY, 12));
-        list2.addTask(task10);
-        try{
-            list1.addTask(task2);
-        }
-        catch (Exception e)
-        {
-            System.out.println("Exception");
-        }
-        list1.setScanningDueDate(duedate);
-        System.out.println(list2);
-        System.out.println("Here!");
-
-//        list1.setScanningDueDate(duedate);
-//        ToDoList list5 = new ToDoList();
-//        try{
-//        list5 =(ToDoList) list1.clone();
-//            System.out.println("im here");}
-//        catch(Exception e){
-//            System.out.println("im lol here");
-//            System.out.println(e);
-//        }
-//        System.out.println(list1);
-//
-//
-//        Task cloned = task1.clone();
-//        System.out.println(cloned);
-//        TreeMap<Date,TreeSet<Task>> tMap = list1.getDateOrderDict();
-        //TODO:SORT THE TASKS WITH THE SAME DATE BY ALPHABETIC ORDER
-//        for(Map.Entry<Date,TreeSet<Task>> entry : tMap.entrySet())
-//        {
-//            Date date = entry.getKey();
-//            TreeSet<Task> tSet = entry.getValue();
-//            for(Task task:tSet)
-//            {
-//                System.out.println(task.getDueDateSimple() + " " + task.getDescription());
-//            }
-//
-//        }
-
-
-//        LinkedHashSet<Task> hashSet = list1.getAddingOrderList();
-        /**PRINT THEM IN THE ADDING ORDER!*/
-//        for(Task task:hashSet)
-//        {
-//            System.out.println( "(" + task.getDescription()+ ", " +task.getDueDateSimple() + ")");
-//        }
-
-//        Task task5 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
-//        try{
-//        list1.addTask(task5);}
-//        catch(TaskAlreadyExistsException e)
-//        {
-//            System.out.println("TaskAlreadyExistsException was thrown!");
-//            System.out.println("task with different reference but same content was disabled from be added!");
-//        }
-        for (Task t : list1) {
-            System.out.println(t);
-            System.out.println("-----------------------------------");
-        }
-        System.out.println(list1);
-
-        /**END OF RACHELI AND RAZ TESTS*/
-
-
     }
 
     /**
@@ -218,144 +132,144 @@ public class Main {
     /**
      * Tests for part B.
      */
-//    private static void testPartB() {
-//        ToDoList list1 = new ToDoList();
-//        for (Task t : list1) {
-//            System.out.println("You should not reach here!");
-//        }
-//
-//        Task task1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
-//        Task task2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.DECEMBER, 8));
-//        Task task3 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
-//        Task task4 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
-//
-//        list1.addTask(task1);
-//        list1.addTask(task4);
-//        list1.addTask(task3);
-//        list1.addTask(task2);
-//
-//        System.out.println("list1: " + list1);
-//
-//        ToDoList list2 = list1.clone();
-//        System.out.println("list1: " + list1);
-//        System.out.println("list2: " + list2);
-//
-//        System.out.println("Is list1 == list2? " + (list1 == list2));
-//        System.out.println("Are lists list1 and list2 equal? " + list1.equals(list2));
-//        System.out.println("Are lists list2 and list1 equal? " + list2.equals(list1));
-//        System.out.println("Is list1.equals(null)? " + list1.equals(null));
-//
-//        task3.setDueDate(new Date(2022 - 1900, Calendar.DECEMBER, 18));
-//
-//        System.out.println("list1: " + list1);
-//        System.out.println("list2: " + list2);
-//
-//        System.out.println();
-//
-//        System.out.println("Are lists list1 and list2 equal? " + list1.equals(list2));
-//        System.out.println("Are lists list2 and list1 equal? " + list2.equals(list1));
-//
-//
-//        try {
-//            list1.addTask(new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 24)));
-//        } catch (TaskAlreadyExistsException e) {
-//            System.out.println("Cannot add the task!");
-//        }
-//        try {
-//            list1.addTask(new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.DECEMBER, 8)));
-//        } catch (TaskAlreadyExistsException e) {
-//            System.out.println("Cannot add the task!");
-//        }
-//        Task clonedTask1 = task1.clone();
-//        try {
-//            list1.addTask(clonedTask1);
-//        } catch (TaskAlreadyExistsException e) {
-//            System.out.println("Cannot add the task!");
-//        }
-//
-//        System.out.println("task1: " + task1);
-//        System.out.println("clonedTask1: " + clonedTask1);
-//        System.out.println("Are lists 11 and clonedTask1 equal? " + task1.equals(clonedTask1));
-//        System.out.println("Are lists clonedTask1 and task1 equal? " + clonedTask1.equals(task1));
-//        System.out.println("Is task1 == clonedTask1? " + (task1 == clonedTask1));
-//        System.out.println("Is task1.equals(null)? " + task1.equals(null));
-//        System.out.println();
-//
-//
-//        Date[] dates = {null,
-//                        new Date(2023 - 1900, Calendar.MARCH, 21),
-//                        task2.getDueDate(),
-//                        new Date(2017 - 1900, Calendar.SEPTEMBER, 17),
-//                        new Date(2022 - 1900, Calendar.DECEMBER, 7),
-//                        task3.getDueDate()};
-//
-//        checkScans(list1, dates);
-//
-//        ToDoList list3 = new ToDoList();
-//
-//        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
-//        list3.addTask(task2);
-//        System.out.println("list3: " + list3);
-//        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
-//
-//        list3.addTask(task4);
-//        System.out.println("list3: " + list3);
-//        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
-//
-//        list3.addTask(task1);
-//        System.out.println("list3: " + list3);
-//        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
-//
-//        list3.addTask(task3);
-//        System.out.println("list3: " + list3);
-//        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
-//
-//        System.out.println();
-//        Set<ToDoList> set = new HashSet<>();
-//        set.add(list1);
-//        set.add(list3);
-//        System.out.println("list1: " + list1);
-//        System.out.println("list3: " + list3);
-//
-//        checkScans(list3, dates);
-//
-//        Task task5 = new Task("Calculus 2 HW10", new Date(2022 - 1900, Calendar.OCTOBER, 25));
-//        list3.addTask(task5);
-//
-//        System.out.println("list3: " + list3);
-//        checkScans(list3, dates);
-//
-//
-//
-//        System.out.println("Number of element in set: " + set.size());
-//
-//
-//        System.out.println("\nTesting of part B is over!");
-//    }
-//
-//    /**
-//     * Checks all of the scan types for a given ToDoList using different dates.
-//     */
-//    private static void checkScans(ToDoList tdl, Date[] dates) {
-//        System.out.println("Starts scanning...");
-//        for (Task t : tdl) {
-//            System.out.println(t);
-//            System.out.println("-----------------------------------");
-//        }
-//
-//        System.out.println("After initial scanning\n");
-//
-//        int i = 1;
-//        for (Date date : dates) {
-//            System.out.println("Starting scan number " + i);
-//            tdl.setScanningDueDate(date);
-//            for (Task t : tdl) {
-//                System.out.println(t);
-//                System.out.println("-----------------------------------");
-//            }
-//            System.out.println("After scan number " + i++ + "\n");
-//        }
-//
-//        System.out.println("Done scanning");
-//    }
+    private static void testPartB() {
+        ToDoList list1 = new ToDoList();
+        for (Task t : list1) {
+            System.out.println("You should not reach here!");
+        }
+
+        Task task1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
+        Task task2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.DECEMBER, 8));
+        Task task3 = new Task("Software Engineering HW2", new Date(2023 - 1900, Calendar.JANUARY, 1));
+        Task task4 = new Task("Software Engineering HW3", new Date(2023 - 1900, Calendar.JANUARY, 12));
+
+        list1.addTask(task1);
+        list1.addTask(task4);
+        list1.addTask(task3);
+        list1.addTask(task2);
+
+        System.out.println("list1: " + list1);
+
+        ToDoList list2 = list1.clone();
+        System.out.println("list1: " + list1);
+        System.out.println("list2: " + list2);
+
+        System.out.println("Is list1 == list2? " + (list1 == list2));
+        System.out.println("Are lists list1 and list2 equal? " + list1.equals(list2));
+        System.out.println("Are lists list2 and list1 equal? " + list2.equals(list1));
+        System.out.println("Is list1.equals(null)? " + list1.equals(null));
+
+        task3.setDueDate(new Date(2022 - 1900, Calendar.DECEMBER, 18));
+
+        System.out.println("list1: " + list1);
+        System.out.println("list2: " + list2);
+
+        System.out.println();
+
+        System.out.println("Are lists list1 and list2 equal? " + list1.equals(list2));
+        System.out.println("Are lists list2 and list1 equal? " + list2.equals(list1));
+
+
+        try {
+            list1.addTask(new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 24)));
+        } catch (TaskAlreadyExistsException e) {
+            System.out.println("Cannot add the task!");
+        }
+        try {
+            list1.addTask(new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.DECEMBER, 8)));
+        } catch (TaskAlreadyExistsException e) {
+            System.out.println("Cannot add the task!");
+        }
+        Task clonedTask1 = task1.clone();
+        try {
+            list1.addTask(clonedTask1);
+        } catch (TaskAlreadyExistsException e) {
+            System.out.println("Cannot add the task!");
+        }
+
+        System.out.println("task1: " + task1);
+        System.out.println("clonedTask1: " + clonedTask1);
+        System.out.println("Are lists 11 and clonedTask1 equal? " + task1.equals(clonedTask1));
+        System.out.println("Are lists clonedTask1 and task1 equal? " + clonedTask1.equals(task1));
+        System.out.println("Is task1 == clonedTask1? " + (task1 == clonedTask1));
+        System.out.println("Is task1.equals(null)? " + task1.equals(null));
+        System.out.println();
+
+
+        Date[] dates = {null,
+                new Date(2023 - 1900, Calendar.MARCH, 21),
+                task2.getDueDate(),
+                new Date(2017 - 1900, Calendar.SEPTEMBER, 17),
+                new Date(2022 - 1900, Calendar.DECEMBER, 7),
+                task3.getDueDate()};
+
+        checkScans(list1, dates);
+
+        ToDoList list3 = new ToDoList();
+
+        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
+        list3.addTask(task2);
+        System.out.println("list3: " + list3);
+        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
+
+        list3.addTask(task4);
+        System.out.println("list3: " + list3);
+        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
+
+        list3.addTask(task1);
+        System.out.println("list3: " + list3);
+        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
+
+        list3.addTask(task3);
+        System.out.println("list3: " + list3);
+        System.out.println("Are lists list1 and list3 equal? " + list1.equals(list3));
+
+        System.out.println();
+        Set<ToDoList> set = new HashSet<>();
+        set.add(list1);
+        set.add(list3);
+        System.out.println("list1: " + list1);
+        System.out.println("list3: " + list3);
+
+        checkScans(list3, dates);
+
+        Task task5 = new Task("Calculus 2 HW10", new Date(2022 - 1900, Calendar.OCTOBER, 25));
+        list3.addTask(task5);
+
+        System.out.println("list3: " + list3);
+        checkScans(list3, dates);
+
+
+
+        System.out.println("Number of element in set: " + set.size());
+
+
+        System.out.println("\nTesting of part B is over!");
+    }
+
+    /**
+     * Checks all of the scan types for a given ToDoList using different dates.
+     */
+    private static void checkScans(ToDoList tdl, Date[] dates) {
+        System.out.println("Starts scanning...");
+        for (Task t : tdl) {
+            System.out.println(t);
+            System.out.println("-----------------------------------");
+        }
+
+        System.out.println("After initial scanning\n");
+
+        int i = 1;
+        for (Date date : dates) {
+            System.out.println("Starting scan number " + i);
+            tdl.setScanningDueDate(date);
+            for (Task t : tdl) {
+                System.out.println(t);
+                System.out.println("-----------------------------------");
+            }
+            System.out.println("After scan number " + i++ + "\n");
+        }
+
+        System.out.println("Done scanning");
+    }
 }
