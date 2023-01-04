@@ -23,6 +23,7 @@ public class ToDoList implements Cloneable,TaskIterable {
         return addingOrderList;
     }
 
+
     public Task getFirstTask()
     {
         for(Map.Entry<Date,TreeSet<Task>> entry : dateOrderDict.entrySet())
@@ -77,8 +78,15 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Object clone() throws CloneNotSupportedException {
+        ToDoList newTDL = new ToDoList();
+       for(Task t : this.addingOrderList)
+       {
+           newTDL.addTask(t.clone());
+       }
+       Date copiedScanningDate =(Date) this.scanningDueDate.clone();
+       newTDL.setScanningDueDate(copiedScanningDate);
+       return newTDL;
     }
 
     @Override

@@ -113,6 +113,7 @@ public class Main {
 
         /**RACHELI AND RAZ TESTS*/
         /**RACHELI AND RAZ TESTS*/
+
         ToDoList list1 = new ToDoList();
                 Task task1 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.OCTOBER, 20));
         Task task0 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.OCTOBER, 20));
@@ -124,6 +125,20 @@ public class Main {
         list1.addTask(task0);
         list1.addTask(task6);
         list1.addTask(task2);
+        Date duedate = new Date(2023 - 1900, Calendar.JANUARY, 12);
+        list1.setScanningDueDate(duedate);
+        ToDoList list5 = new ToDoList();
+        try{
+        list5 =(ToDoList) list1.clone();
+            System.out.println("im here");}
+        catch(Exception e){
+            System.out.println("im lol here");
+            System.out.println(e);
+        }
+
+
+        Task cloned = task1.clone();
+        System.out.println(cloned);
         TreeMap<Date,TreeSet<Task>> tMap = list1.getDateOrderDict();
         //TODO:SORT THE TASKS WITH THE SAME DATE BY ALPHABETIC ORDER
 //        for(Map.Entry<Date,TreeSet<Task>> entry : tMap.entrySet())
