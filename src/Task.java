@@ -98,6 +98,7 @@ public class Task implements Cloneable,Comparable {
     @Override
     public String toString() {
         String str = this.description + ", " + this.dueDateSimple;
+
         return str;
     }
 }
