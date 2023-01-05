@@ -1,18 +1,13 @@
 import jdk.nashorn.api.tree.Tree;
 
 import java.util.*;
-
-/**
- *
- */
 public class ToDoList implements Cloneable,TaskIterable {
     private LinkedHashSet<Task> addingOrderList;
     private TreeMap<Date, TreeSet<Task>> dateOrderDict;
     private Date scanningDueDate;
 
-
     /**
-     *
+     *CONSTRUCTOR
      */
     public ToDoList()
     {
@@ -22,19 +17,24 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     /**
-     * @return
+     * returns the list of tasks by date order
+     * @return the list of tasks by date order
      */
     public TreeMap<Date, TreeSet<Task>> getDateOrderDict() {
         return dateOrderDict;
     }
 
+    /**
+     * returns the list of tasks by adding order
+     * @return the list of tasks by adding order
+     */
     public LinkedHashSet<Task> getAddingOrderList() {
         return addingOrderList;
     }
 
-
     /**
-     * @return
+     *gets the first task of the list
+     * @return the first task of the list
      */
     public Task getFirstTask()
     {
@@ -48,9 +48,9 @@ public class ToDoList implements Cloneable,TaskIterable {
         return null;
     }
 
-
     /**
-     * @param date
+     * sets the date that will determine the way to scan
+     * @param date- the date that will determine the way to scan
      */
     @Override
     public void setScanningDueDate(Date date) {
@@ -58,8 +58,8 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     /**
-     *
-     * @param task
+     *adds a task to the list
+     * @param task- the task to add
      */
     public void addTask(Task task)
     {
@@ -89,8 +89,8 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     /**
-     *
-     * @return
+     *returns the hash code of the current list
+     * @return the hash code of the current list
      */
     @Override
     public int hashCode() {
@@ -102,8 +102,9 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     /**
-     * @param obj
-     * @return
+     * checks if two lists are the same
+     * @param obj - list1 to compare
+     * @return true if the lists are the same, otherwise false
      */
     @Override
     public boolean equals(Object obj) {
@@ -143,7 +144,8 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     /**
-     * @return
+     * copies the current list
+     * @return a copy of the current list
      */
     @Override
     public ToDoList clone() {
@@ -164,9 +166,9 @@ public class ToDoList implements Cloneable,TaskIterable {
         }
     }
 
-
     /**
-     * @return
+     * creates a String of the current list
+     * @return a String of the current list
      */
     @Override
     public String toString() {
@@ -188,7 +190,8 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     /**
-     * @return
+     * ITERATOR
+     * @return an iterator
      */
     @Override
     public Iterator<Task> iterator() {
@@ -205,21 +208,20 @@ public class ToDoList implements Cloneable,TaskIterable {
         }
     }
 
-    /**
-     *
-     */
-
     private class ToDoListIterator implements Iterator<Task> {
         private Task nextTask ;
         private Date nextDate;
         private Date limitScanDate;
 
+        /**
+         * CONSTRUCTOR
+         */
         public ToDoListIterator() {
             this.nextTask=null;
         }
 
         /**
-         * constructor
+         * CONSTRUCTOR
          * @param firstTask- the next node
          */
         public ToDoListIterator(Task firstTask){
@@ -227,15 +229,22 @@ public class ToDoList implements Cloneable,TaskIterable {
             this.nextDate=getDateOrderDict().firstKey();
             this.limitScanDate=null;
         }
+
+        /**
+         * CONSTRUCTOR
+         * @param firstTask- the next node
+         * @param date- the limitScanDate
+         */
         public ToDoListIterator(Task firstTask,Date date)
         {
             this.nextTask=firstTask;
             this.nextDate=getDateOrderDict().firstKey();
             this.limitScanDate=date;
         }
+
         /**
-         * continues to the next node
-         * @return the data of the next node
+         * continues to the next task
+         * @return the data of the next task
          */
         @Override
         public Task next()
@@ -259,12 +268,11 @@ public class ToDoList implements Cloneable,TaskIterable {
                 }
             }
             return taskToReturn;
-
         }
 
         /**
-         * checks if there is a next node
-         * @return true if there is a next node, otherwise false
+         * checks if there is a next task
+         * @return true if there is a next task, otherwise false
          */
         @Override
         public boolean hasNext(){
@@ -277,16 +285,16 @@ public class ToDoList implements Cloneable,TaskIterable {
                 }
             }
             return nextTask!=null||nextDate!=null;
-
         }
-
     }
-
-    /**
-     *
-     */
     public class TaskComparator implements Comparator<Task>
     {
+        /**
+         * compares two tasks
+         * @param t1 the first object to be compared.
+         * @param t2 the second object to be compared.
+         * @return
+         */
         @Override
         public int compare(Task t1, Task t2) {
             return t1.compareTo(t2);

@@ -5,11 +5,12 @@ import java.util.Set;
 
 class MyCloneable implements Cloneable {
     private int num;
-
+    /**
+     * CONSTRUCTOR
+     */
     public MyCloneable(int num) {
         this.num = num;
     }
-
     public int getNum() {
         return num;
     }

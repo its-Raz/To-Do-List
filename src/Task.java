@@ -3,12 +3,15 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Task implements Cloneable,Comparable {
-
     private String description;
     private Date dueDate;
     private String dueDateSimple;
 
-
+    /**
+     * CONSTRUCTOR
+     * @param desc -the description
+     * @param date - dueDate
+     */
     public Task(String desc, Date date)
     {
         this.description=desc;
@@ -16,6 +19,11 @@ public class Task implements Cloneable,Comparable {
         this.dueDateSimple=simpleDateFormat(date);
     }
 
+    /**
+     * creates a String of a current date
+     * @param date
+     * @return a String of a current date
+     */
     public static String simpleDateFormat(Date date)
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -23,38 +31,42 @@ public class Task implements Cloneable,Comparable {
     }
 
     /**
-     * @return
+     * gets the description of the current task
+     * @return the description of the current task
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * @param date
+     * sets the due date
+     * @param date - the date to update
      */
     public void setDueDate(Date date)
     {
-
         this.dueDate.setTime(date.getTime());
         this.dueDateSimple = simpleDateFormat(date);
-
     }
 
-
     /**
-     * @return
+     * gets the current due date
+     * @return the current due date
      */
     public Date getDueDate() {
         return dueDate;
     }
 
+    /**
+     * gets the string of the current due date
+     * @return the string of the current due date
+     */
     public String getDueDateSimple() {
         return dueDateSimple;
     }
 
-
     /**
-     * @return
+     *returns the hash code of the current task
+     * @return the hash code of the current task
      */
     @Override
     public int hashCode() {
@@ -63,8 +75,9 @@ public class Task implements Cloneable,Comparable {
     }
 
     /**
-     * @param obj
-     * @return
+     * checks if two tasks are the same
+     * @param obj - task1 to compare
+     * @return true if the tasks are the same, otherwise false
      */
     @Override
     public boolean equals(Object obj) {
@@ -77,11 +90,10 @@ public class Task implements Cloneable,Comparable {
         }
     }
 
-    //TODO:CHECK MAYBE TO ADD COMPERATOR AND NOT USING COMPARE TO DUE TO DOWNCASTING DANGER
-
     /**
+    * compares two tasks
      * @param other the object to be compared.
-     * @return
+     * @return 1 if the tasks are the same, otherwise -1
      */
     @Override
     public int compareTo(Object other) {
@@ -105,7 +117,8 @@ public class Task implements Cloneable,Comparable {
     }
 
     /**
-     * @return
+     * copies the current task
+     * @return a copy of the current task
      */
     @Override
     public Task clone() {
@@ -120,7 +133,8 @@ public class Task implements Cloneable,Comparable {
     }
 
     /**
-     * @return
+     * creates a String of the current task
+     * @return a String of the current task
      */
     @Override
     public String toString() {

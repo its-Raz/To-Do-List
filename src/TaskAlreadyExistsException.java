@@ -12,8 +12,7 @@ public class TaskAlreadyExistsException extends RuntimeException  {
         public TaskAlreadyExistsException(String message) {
             super(message);
         }
-
-    /**
+     /**
      * generate TaskAlreadyExist exception with message and cause
      * @param message
      * @param cause

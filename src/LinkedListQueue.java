@@ -4,6 +4,7 @@ import java.util.Iterator;
 public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
     Node<T> first;
     Node<T> last;
+
     /**
      * CONSTRUCTOR
      */
@@ -12,6 +13,10 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
         this.last = null;
     }
 
+    /**
+     * adds a node to the end of the queue
+     * @param element- the node to add
+     */
     public void enqueue(T element)
     {
         Node<T> newNode = new Node<T>(element);
@@ -26,12 +31,23 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
             this.last=newNode;
         }
     }
+
+    /**
+     * updates the first node in the queue
+     * @param node- the node to update
+     */
     public void setFirst(Node<T> node){this.first=node;}
+
+    /**
+     * updates the last node in the queue
+     * @param node- the node to update
+     */
     public void setLast(Node<T> node){this.last=node;}
-/**
- * removes the head and returns the data of the head
- * @return the data of the head
- */
+
+    /**
+    * removes the head and returns the data of the head
+    * @return the data of the head
+    */
     public T dequeue()
     {
         if(isEmpty()){
@@ -47,11 +63,17 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
         }
        return data;
     }
+
+    /**
+     * returns the first node at the head of the queue without removing it
+     * @return the first node
+     */
     public T peek()
     {
         if(this.first!=null){return this.first.getData();}
         else{throw new EmptyQueueException();}
     }
+
     /**
      * checks how many node are there
      * @return the number of nodes
@@ -68,6 +90,7 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
       }
       return sumNodes;
     }
+
     /**
      * checks if the queue is empty
      * @return true if empty, otherwise false
@@ -76,7 +99,10 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
         return first == null;
     }
 
-
+    /**
+     * copies a queue
+     * @return the copied queue
+     */
     @Override
     public LinkedListQueue<T> clone() {
         try{
@@ -115,36 +141,38 @@ public class LinkedListQueue<T extends Cloneable> implements Queue<T> {
         }
     }
 
-
     private class LinkedListQueueIterator implements Iterator<T> {
       private Node<T> nextNode ;
-        /**
-         * constructor
-         * @param nextNode- the next node
-         */
+
+      /**
+      * constructor
+      * @param nextNode- the next node
+      */
       public LinkedListQueueIterator(Node<T> nextNode){
           this.nextNode = nextNode;
       }
-        /**
-         * continues to the next node
-         * @return the data of the next node
-         */
+
+      /**
+      * continues to the next node
+      * @return the data of the next node
+      */
       @Override
         public T next(){
           T data = nextNode.getData();
           nextNode = nextNode.getNextNode();
           return data;
       }
-        /**
-         * checks if there is a next node
-         * @return true if there is a next node, otherwise false
-         */
+
+      /**
+      * checks if there is a next node
+      * @return true if there is a next node, otherwise false
+      */
       @Override
         public boolean hasNext(){
           return nextNode != null;
       }
-
     }
+
     /**
      * Iterator
      */
