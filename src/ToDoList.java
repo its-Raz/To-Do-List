@@ -248,6 +248,4 @@ public class ToDoList implements Cloneable,TaskIterable {
             return t1.compareTo(t2);
         }
     }
-
-    //test1
 }
