@@ -2,12 +2,18 @@ import jdk.nashorn.api.tree.Tree;
 
 import java.util.*;
 
+/**
+ *
+ */
 public class ToDoList implements Cloneable,TaskIterable {
     private LinkedHashSet<Task> addingOrderList;
     private TreeMap<Date, TreeSet<Task>> dateOrderDict;
     private Date scanningDueDate;
 
 
+    /**
+     *
+     */
     public ToDoList()
     {
         this.addingOrderList=new LinkedHashSet<Task>();
@@ -15,6 +21,9 @@ public class ToDoList implements Cloneable,TaskIterable {
         this.scanningDueDate=null;
     }
 
+    /**
+     * @return
+     */
     public TreeMap<Date, TreeSet<Task>> getDateOrderDict() {
         return dateOrderDict;
     }
@@ -24,6 +33,9 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
 
+    /**
+     * @return
+     */
     public Task getFirstTask()
     {
         for(Map.Entry<Date,TreeSet<Task>> entry : dateOrderDict.entrySet())
@@ -37,11 +49,18 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
 
+    /**
+     * @param date
+     */
     @Override
     public void setScanningDueDate(Date date) {
         this.scanningDueDate=date;
     }
 
+    /**
+     *
+     * @param task
+     */
     public void addTask(Task task)
     {
         Date taskDate = task.getDueDate();
@@ -69,6 +88,10 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -78,6 +101,10 @@ public class ToDoList implements Cloneable,TaskIterable {
         return hash;
     }
 
+    /**
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof ToDoList))
@@ -115,6 +142,9 @@ public class ToDoList implements Cloneable,TaskIterable {
         return true;
     }
 
+    /**
+     * @return
+     */
     @Override
     public ToDoList clone() {
         try{
@@ -135,6 +165,9 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
 
+    /**
+     * @return
+     */
     @Override
     public String toString() {
         int counter=0;
@@ -153,6 +186,10 @@ public class ToDoList implements Cloneable,TaskIterable {
         }
         return str + "]";
     }
+
+    /**
+     * @return
+     */
     @Override
     public Iterator<Task> iterator() {
         if(this.scanningDueDate!=null)
@@ -167,6 +204,10 @@ public class ToDoList implements Cloneable,TaskIterable {
             return new ToDoListIterator();
         }
     }
+
+    /**
+     *
+     */
 
     private class ToDoListIterator implements Iterator<Task> {
         private Task nextTask ;
@@ -241,6 +282,9 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     }
 
+    /**
+     *
+     */
     public class TaskComparator implements Comparator<Task>
     {
         @Override

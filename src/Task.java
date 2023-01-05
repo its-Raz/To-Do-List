@@ -22,9 +22,16 @@ public class Task implements Cloneable,Comparable {
         return sdf.format(date);
     }
 
+    /**
+     * @return
+     */
     public String getDescription() {
         return description;
     }
+
+    /**
+     * @param date
+     */
     public void setDueDate(Date date)
     {
 
@@ -34,6 +41,9 @@ public class Task implements Cloneable,Comparable {
     }
 
 
+    /**
+     * @return
+     */
     public Date getDueDate() {
         return dueDate;
     }
@@ -43,12 +53,19 @@ public class Task implements Cloneable,Comparable {
     }
 
 
+    /**
+     * @return
+     */
     @Override
     public int hashCode() {
         String space = " ";
         return (this.description+space+this.dueDateSimple).hashCode();
     }
 
+    /**
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof Task))
@@ -62,6 +79,10 @@ public class Task implements Cloneable,Comparable {
 
     //TODO:CHECK MAYBE TO ADD COMPERATOR AND NOT USING COMPARE TO DUE TO DOWNCASTING DANGER
 
+    /**
+     * @param other the object to be compared.
+     * @return
+     */
     @Override
     public int compareTo(Object other) {
         Task otherTask = (Task)other;
@@ -83,6 +104,9 @@ public class Task implements Cloneable,Comparable {
         else{return -1;}
     }
 
+    /**
+     * @return
+     */
     @Override
     public Task clone() {
         try{
@@ -95,6 +119,9 @@ public class Task implements Cloneable,Comparable {
         }
     }
 
+    /**
+     * @return
+     */
     @Override
     public String toString() {
         String str = this.description + ", " + this.dueDateSimple;

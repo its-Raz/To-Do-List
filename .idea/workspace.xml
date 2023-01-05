@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="update12">
+    <list default="true" id="14991d62-5dc2-4eac-b894-866ce48b5e2b" name="Changes" comment="no comment">
       <change beforePath="$PROJECT_DIR$/src/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDoList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +52,7 @@
       <workItem from="1672757392535" duration="448000" />
       <workItem from="1672768560658" duration="11352000" />
       <workItem from="1672829154320" duration="4794000" />
-      <workItem from="1672918399611" duration="1038000" />
+      <workItem from="1672918399611" duration="1360000" />
     </task>
     <task id="LOCAL-00001" summary="starting files">
       <created>1672672127298</created>
@@ -166,7 +166,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672920778245</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update123">
+      <created>1672920903420</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1672920903420</updated>
+    </task>
+    <task id="LOCAL-00018" summary="no comment">
+      <created>1672921000486</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672921000486</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +213,9 @@
     <MESSAGE value="FINISH OUTPUT IS IDENTICAL TO HW OUTPUT" />
     <MESSAGE value="update1" />
     <MESSAGE value="update12" />
-    <option name="LAST_COMMIT_MESSAGE" value="update12" />
+    <MESSAGE value="update123" />
+    <MESSAGE value="no comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="no comment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
